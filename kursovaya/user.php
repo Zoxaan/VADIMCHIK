@@ -1,11 +1,11 @@
+<body>
+<?php include "headet.php";
+?>
 <?php
-
 // Генерация рандомных чисел для капчи, только если их еще нет в сессии
-if (!isset($_SESSION['num1']) || !isset($_SESSION['num2']) || !isset($_SESSION['captchaResult'])) {
-$_SESSION['num1'] = rand(1, 10);
-$_SESSION['num2'] = rand(1, 10);
-$_SESSION['captchaResult'] = $_SESSION['num1'] + $_SESSION['num2'];
-}
+$num1 = rand(1, 10);
+$num2 = rand(1, 10);
+$_SESSION['captchaResult'] = $num1 + $num2;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Проверка капчи
@@ -18,17 +18,12 @@ echo "Форма успешно отправлена!";
 echo "Пожалуйста, введите правильный ответ на капчу.";
 }
 
-// Генерация новых рандомных чисел для капчи после отправки формы
-$_SESSION['num1'] = rand(1, 10);
-$_SESSION['num2'] = rand(1, 10);
-$_SESSION['captchaResult'] = $_SESSION['num1'] + $_SESSION['num2'];
+
 }
 
 
 ?>
-<body>
-<?php include "headet.php";
-?>
+
 <!-- Форма с капчей -->
 
 <div class="container form-container d-flex align-items-center justify-content-center">
@@ -44,7 +39,7 @@ $_SESSION['captchaResult'] = $_SESSION['num1'] + $_SESSION['num2'];
         <input type="password" class="form-control" id="password" name="password" required>
 
         <!-- Простое математическое уравнение в качестве капчи -->
-        <label for="captcha" class="form-label mt-3">Сколько будет <?= $_SESSION['num1'] ?> + <?= $_SESSION['num2'] ?>?</label>
+        <label for="captcha" class="form-label mt-3">Сколько будет <?= $num1 ?> + <?= $num2 ?>?</label>
         <input type="text" class="form-control" id="captcha" name="captcha" required>
 
         <button type="submit" class="btn btn-primary d-grid gap-2 col-3 mx-auto mt-3">Авторизация</button>

@@ -35,12 +35,12 @@ if (!isset($_SESSION['auth'])){
                 <a class="nav-link" href="user.php">Войти</a>
             </li>
         <?php } ?>
-        <?php if ($_SESSION["idrolle"] === 1) { ?>
+        <?php if ( isset($_SESSION["idrolle"])&& $_SESSION["idrolle"] === 1) { ?>
             <li class="nav-item">
                 <a class="nav-link" href="UsersProfile.php">Профиль пациента</a>
             </li>
         <?php } ?>
-        <?php if ($_SESSION["idrolle"] === 2) { ?>
+        <?php if ( isset($_SESSION["idrolle"])&& $_SESSION["idrolle"] === 2) { ?>
             <li class="nav-item">
                 <a class="nav-link" href="strprofile.php">Админка</a>
             </li>
